@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
   <title>Iniciar sesión - AdoptPets</title>
-  @vite(['resources/css/login.css', 'resources/js/app.js'])
+  <link href="{{ asset('css/login.css') }}" rel='stylesheet'>
+
 </head>
 <body>
   <header>

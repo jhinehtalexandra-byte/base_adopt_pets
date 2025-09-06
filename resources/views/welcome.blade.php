@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'AdoptPets' }}</title>
     <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-    @vite(['resources/css/inicio_style.css', 'resources/js/app.js'])
+    
+    <link href="{{ asset('css/inicio_style.css') }}" rel='stylesheet'>
     <style>
         /* CSS inline para la imagen de fondo */
         #adoptpets {
