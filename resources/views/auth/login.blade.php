@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
   <title>Iniciar sesión - AdoptPets</title>
-  <link href="{{ asset('css/login.css') }}" rel='stylesheet'>
+  <style>
+    {!! file_get_contents(resource_path('css/login.css')) !!}
+  </style>
 
 </head>
 <body>
@@ -17,9 +19,9 @@
       <nav>
         <a href="{{ url('/') }}#adoptpets" class="nav-link">Inicio</a>
         <a href="#" class="nav-link">Adoptar</a>
-        <a href="#" class="nav-link">Refugios</a>
-        <a href="{{ url('/') }}#contactanos" class="nav-link">Contactanos</a>
-        <a href="{{ route('login') }}" class="boton">Iniciar sesion</a>
+        <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
+        <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
+        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
       </nav>
     </div>
   </header>

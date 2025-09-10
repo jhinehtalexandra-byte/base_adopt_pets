@@ -12,26 +12,6 @@ body {
   min-height: 100vh;
 }
 
-/* Botones globales */
-button {
-  border-radius: 20px;
-  padding: 10px 20px;
-  border: none;
-  font-weight: bold;
-  font-size: 16px;
-  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
-  background-color: #22C55E;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #1B9E4B;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-}
-
 /* Header */
 header {
   background-color: rgba(255, 255, 255, 0.95);
@@ -101,18 +81,17 @@ header a:hover {
   box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
 }
 
-/* Container de login */
-.login-container {
+/* Container de forgot password */
+.forgot-container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 60px 40px;
-  gap: 60px;
   min-height: calc(100vh - 100px);
 }
 
-/* Formulario de login */
-.login-formulario {
+/* Formulario de forgot password */
+.forgot-formulario {
   background: #ffffff;
   padding: 40px;
   border-radius: 20px;
@@ -122,32 +101,32 @@ header a:hover {
   text-align: center;
 }
 
-.login-formulario h1 {
+.forgot-formulario h1 {
   color: #22C55E;
   font-size: 28px;
-  text-align: left;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.login-formulario h2 {
-  color: #1B9E4B;
-  font-size: 24px;
+  text-align: center;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-.login-formulario p {
+.forgot-formulario h2 {
+  color: #1B9E4B;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.forgot-formulario p {
   margin: 15px 0 25px 0;
   font-size: 14px;
   color: #666;
   line-height: 1.5;
+  text-align: center;
 }
 
 /* Inputs del formulario */
-.login-formulario form input[type="email"],
-.login-formulario form input[type="password"],
-.login-formulario form input[type="text"] {
+.forgot-formulario form input[type="email"] {
   width: 100%;
   margin-bottom: 15px;
   padding: 15px;
@@ -157,37 +136,14 @@ header a:hover {
   transition: border-color 0.3s ease;
 }
 
-.login-formulario form input:focus {
+.forgot-formulario form input:focus {
   outline: none;
   border-color: #22C55E;
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
 }
 
-/* Checkbox recordar */
-.recordar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 25px;
-  text-align: left;
-}
-
-.login-formulario input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  margin: 0;
-  padding: 0;
-  accent-color: #22C55E;
-}
-
-.recordar label {
-  font-size: 14px;
-  color: #666;
-  cursor: pointer;
-}
-
 /* Botón de envío */
-.login-formulario button {
+.forgot-formulario button {
   width: 100%;
   background-color: #22C55E;
   color: white;
@@ -198,44 +154,36 @@ header a:hover {
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+  transition: all 0.3s ease;
+}
+
+.forgot-formulario button:hover {
+  background-color: #1B9E4B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
 }
 
 /* Enlaces adicionales */
-.login-opciones {
+.forgot-opciones {
   text-align: center;
   margin-top: 20px;
 }
 
-.olvido-password,
-.registro-link {
+.volver-login {
   font-size: 14px;
   margin: 10px 0;
 }
 
-.olvido-password a,
-.registro-link a {
+.volver-login a {
   color: #22C55E;
   text-decoration: none;
   font-weight: 600;
 }
 
-.olvido-password a:hover,
-.registro-link a:hover {
+.volver-login a:hover {
   color: #1B9E4B;
   text-decoration: underline;
-}
-
-/* Imagen de login */
-.login-imagen {
-  flex-shrink: 0;
-}
-
-.login-imagen img {
-  width: 400px;
-  height: 500px;
-  border-radius: 20px;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Mensajes de error y éxito */
@@ -283,65 +231,45 @@ header a:hover {
     justify-content: center;
   }
 
-  .login-container {
-    flex-direction: column;
-    align-items: center;
+  .forgot-container {
     padding: 40px 20px;
-    gap: 30px;
   }
 
-  .login-formulario {
+  .forgot-formulario {
     width: 100%;
     max-width: 400px;
     padding: 30px 25px;
   }
 
-  .login-formulario h1 {
-    display: none;
+  .forgot-formulario h1 {
+    font-size: 24px;
   }
 
-  .login-formulario h2 {
+  .forgot-formulario h2 {
     font-size: 22px;
   }
 
-  .login-formulario p {
+  .forgot-formulario p {
     font-size: 16px;
-  }
-
-  .login-imagen {
-    width: 100%;
-    text-align: center;
-  }
-
-  .login-imagen img {
-    width: 90%;
-    max-width: 300px;
-    height: auto;
-    border-radius: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .login-container {
+  .forgot-container {
     padding: 20px 15px;
   }
 
-  .login-formulario {
+  .forgot-formulario {
     padding: 25px 20px;
   }
 
-  .login-formulario form input {
+  .forgot-formulario form input {
     padding: 12px;
     font-size: 16px;
   }
 
-  .login-formulario button {
+  .forgot-formulario button {
     padding: 12px;
     font-size: 16px;
-  }
-
-  .login-imagen img {
-    width: 80%;
-    max-width: 250px;
   }
 }
