@@ -1,51 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('dashboard')
 
-        <title>AdoptPets</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-        
-        <!-- CSS -->
-        <style>
-    {!! file_get_contents(resource_path('css/welcome.css')) !!}
-  </style>
-        
-        <!-- Font Awesome for social media icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    </head>
-    <body>
-        <!-- Header -->
-        <header>
-            <div class="contenedor">
-                <a href="{{ url('/') }}" class="logo">
-                    <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-                </a>
-                <nav>
-                    <a href="#" class="nav-link">Adoptar</a>
-                    <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-
-                    <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-                    
-                    @if (Route::has('login'))
-                        @auth
-                            <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
-
-                        @else
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="nav-link">Registro</a>
-                                <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-                            @endif
-                        @endauth
-                    @endif
-                </nav>
-            </div>
-        </header>
-
+@section('contenido')
         <!-- Hero Section -->
         <section id="adoptpets">
             <div class="img-contenedor">
@@ -142,5 +97,4 @@
                 </div>
             </div>
         </footer>
-    </body>
-</html>
+@endsection

@@ -29,23 +29,11 @@
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
 
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-                    
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
-
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="nav-link">Registro</a>
-                            <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-                        @endif
-                    @endauth
-                @endif
             </nav>
         </div>
     </header>
     <main>
-        @yield('contenido')
+        @yield('tablamascotas')
     </main>
 </body> 
 </html>

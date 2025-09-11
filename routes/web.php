@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Mascotas\mascotasController;
 use Illuminate\Support\Facades\Route;
 
 // === RUTAS PÚBLICAS ===
@@ -7,6 +8,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/mascotas', [mascotasController::class, 'index'])
+    ->name('mascotas.index');
+
 
 // Ruta para contáctanos
 Route::get('/contactanos', function () {
@@ -48,6 +53,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     
+    Route::get('/dentro', function () {
+        return view('dentro');
+    })->name('dentro');
     // === TUS RUTAS PROTEGIDAS PERSONALIZADAS ===
     // Agrega aquí todas las rutas que requieren autenticación
     
