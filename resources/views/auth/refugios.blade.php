@@ -1,35 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-  <title>Refugios - AdoptPets</title>
-  <style>
-    {!! file_get_contents(resource_path('css/refugios.css')) !!}
-    {!! file_get_contents(resource_path('css/welcome.css')) !!}
-    
-  </style>
+@extends('dashboard')
 
-  <!-- Font Awesome for social media icons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+@section('title', 'refugios')
 
-</head>
-<body>
-  <header>
-    <div class="contenedor">
-      <a href="{{ url('/') }}" class="logo">
-        <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-      </a>
-      <nav>
-        <a href="{{ url('/') }}#adoptpets" class="nav-link">Inicio</a>
-        <a href="#" class="nav-link">Adoptar</a>
-        <a href="{{ url('/refugios') }}" class="nav-link" style="color: #1B9E4B;">Refugios</a>
-        <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-      </nav>
-    </div>
-  </header>
+@section('body-class', 'refugios')
+
+@section('extra-css')
+    <style>
+        {!! file_get_contents(resource_path('css/refugios.css')) !!}
+    </style>
+@endsection
+
+@section('contenido')
 
   <main class="refugios-section">
     <!-- Encabezado -->
@@ -377,17 +358,11 @@
           </div>
         </div>
       </article>
-          </div> <!-- Cierre de refugios-grid -->
+    </div> <!-- Cierre de refugios-grid -->
   </main>
 
-  <footer>
-    <div class="contenedor">
-      <p>&copy; 2025 AdoptPets - Todos los derechos reservados</p>
-    </div>
-  </footer>
-
  <!-- Filtros -->
-        <script>
+  <script>
     // Seleccionamos botones y cards
     const filtroBtns = document.querySelectorAll(".filtro-btn");
     const refugios = document.querySelectorAll(".refugio-card");
@@ -410,39 +385,4 @@
       });
     });
   </script>
-
-     <!-- Footer -->
-        <footer class="footer">
-            <div class="contenedor">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h3>Síguenos en nuestras redes sociales</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="YouTube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <div class="contact-info">
-                            <p><i class="fas fa-phone"></i> Teléfono: 239812910010</p>
-                            <p><i class="fas fa-envelope"></i> Correo: adoptpets@example.com</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle 156 # 58-26 Bogotá-Colombia</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
-                </div>
-            </div>
-        </footer>
-    </body>
-</html>
+@endsection

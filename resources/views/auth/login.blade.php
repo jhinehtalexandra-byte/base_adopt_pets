@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-  <title>Iniciar sesión - AdoptPets</title>
+@extends('dashboard')
+
+@section('title', 'ingreso')
+
+@section('body-class', 'ingreso')
+
+@section('extra-css')
   <style>
     {!! file_get_contents(resource_path('css/login.css')) !!}
   </style>
+@endsection
 
-</head>
-<body>
-  <header>
-    <div class="contenedor">
-      <a href="{{ url('/') }}" class="logo">
-        <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-      </a>
-      <nav>
-        <a href="{{ url('/') }}#adoptpets" class="nav-link">Inicio</a>
-        <a href="#" class="nav-link">Adoptar</a>
-        <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-        <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-      </nav>
-    </div>
-  </header>
+@section('contenido')
 
   <section class="login-container">
     <div class="login-formulario">
@@ -110,5 +96,4 @@
       <img src="{{ asset('images/Perro_viento.png') }}" alt="Perro feliz">
     </div>
   </section>
-</body>
-</html>
+@endsection

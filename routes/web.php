@@ -52,10 +52,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
-    Route::get('/dentro', function () {
-        return view('dentro');
-    })->name('dentro');
+
+
     // === TUS RUTAS PROTEGIDAS PERSONALIZADAS ===
     // Agrega aquí todas las rutas que requieren autenticación
     

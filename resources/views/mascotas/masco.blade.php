@@ -1,6 +1,17 @@
-@extends('layouts.dentro') 
+@extends('dashboard') 
 
-@section('tablamascotas')
+@section('title', 'tabla_mascotas')
+
+@section('body-class', 'tabla_mascotas')
+
+@section('extra-css')
+    <style>
+        {!! file_get_contents(resource_path('css/welcome.css')) !!}
+    </style>
+@endsection
+
+@section('contenido')
+
     <div class="container">
         <h1>Lista de Mascotas</h1>
 
