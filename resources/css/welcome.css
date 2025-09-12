@@ -147,21 +147,6 @@ body {
 
 @media (max-width:768px){
 
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-
-    header nav{
-        margin: auto;
-        display: flex;
-        gap: 5px;
-        flex-direction:column;
-        text-align: center;
-        padding-right: 10px;
-    }
-
 
     #adoptpets {
         background-position: top center !important;
@@ -173,18 +158,6 @@ body {
         background-size: 160%;
         max-width: 100%;
 
-    }
-
-
-
-    header .contenedor{
-        padding: 20 px 0px 10px 0px;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 100%;
-        gap: 8px;
     }
     
     #adoptpets h1{

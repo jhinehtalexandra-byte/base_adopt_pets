@@ -99,15 +99,6 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    header nav {
-        display: none;
-    }
-
-    header .contenedor {
-        padding: 15px 20px;
-        flex-direction: row;
-        justify-content: center;
-    }
 
     /* Mobile styles for contact section */
     #contactanos {
@@ -123,6 +114,7 @@
         text-align: center;
         padding: 30px;
         margin: 0;
+        flex-direction: column;
         padding-bottom: 80px;
     }
 

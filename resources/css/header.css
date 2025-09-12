@@ -36,7 +36,7 @@ header {
 }
 
 header .contenedor{
-    padding: 30px 100px;
+    padding: 30px 70px;
     align-items: center;
     justify-content: space-between;
     display: flex;
@@ -48,7 +48,7 @@ header nav{
     margin-right: 10px;
     align-items: center;
     display: flex;
-    gap: 80px;
+    gap: 60px;
     flex-direction:row;
     text-align: center;
     padding-right: 10px;
@@ -74,7 +74,7 @@ nav a:hover{
 .boton {
     border-radius: 20px;
     padding: 10px 12px;
-    margin-right: -60px;
+    margin-right: -50px;
     border: none;
     font-weight: bold;
     font-size: 17px;
@@ -107,4 +107,38 @@ button:hover {
   background-color: #1B9E4B;
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+@media (max-width:768px){
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    header nav{
+        margin: auto;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        flex-direction:column;
+        text-align: center;
+        padding-right: 10px;
+    }
+
+    header .contenedor{
+        padding: 20 px 0px 10px 0px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        gap: 8px;
+    }
+    
+    .boton {
+    margin-right: 0px;
+    }
+
 }
