@@ -82,3 +82,13 @@ Route::prefix('api')->middleware('auth:sanctum')->group(function () {
     
     // Route::apiResource('posts', PostController::class);
 });
+
+//Jose Velasquez - Formulario de adopcion
+
+use App\Http\Controllers\AdopcionController;
+
+// Jose Velasquez - Formulario de adopción
+Route::get('/', function () {
+    return view('formulario_adopcion'); 
+});
+
