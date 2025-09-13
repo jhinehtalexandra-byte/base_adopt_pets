@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('dashboard')
 
 @section('title','formulario adopcion')
@@ -24,34 +25,24 @@
                         @csrf
                         <input type="hidden" name="id_mascota" value="{{ $mascota->id_mascota ?? 1 }}">
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">¿Por qué deseas adoptar esta mascota?</label>
-                            <textarea name="motivo" class="form-control" rows="3" required placeholder="Contanos tu motivo..."></textarea>
-                        </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">¿Tenés experiencia con mascotas?</label>
-                            <select name="experiencia" class="form-select" required>
-                                <option value="">Seleccioná</option>
-                                <option value="si">Sí</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
+                        <label>Motivo de adopción:</label><br>
+                        <textarea name="motivo" required maxlength="1000"></textarea><br><br>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">Subí el formulario firmado (PDF)</label>
-                            <input type="file" name="pdf_formulario" class="form-control" accept=".pdf" required>
-                        </div>
+                        <label>¿Tenés experiencia con mascotas?</label><br>
+                        <select name="experiencia" required>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select><br><br>
 
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-warning btn-lg text-white fw-bold">
-                                Enviar Solicitud
-                            </button>
-                        </div>
+                        <label>Subí el formulario en PDF:</label><br>
+                        <input type="file" name="pdf_formulario" required accept="application/pdf"><br><br>
+
+                        <button type="submit">Enviar solicitud</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+</body>
+</html>
