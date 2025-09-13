@@ -27,11 +27,16 @@
 <body class="@yield('body-class')">
     <header>
         <div class="contenedor">
-            <a href="{{ url('/') }}" class="logo">
+            <label for="menu-toggle" class="logo">
                 <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-            </a>
+            </label>
+
+            
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">☰</label>
+
             <nav>
-                <a href="{{ route('mascotas.index') }}" class="nav-link">Adoptar</a>
+                <a href="">Adoptar</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
                 <a href="{{ route('mascotas.index') }}" class="nav-link>">Mascotas</a>
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>

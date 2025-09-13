@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('paginas.formulario_adopcion', function () {
+    return view('paginas.formulario_adopcion');
+})->name('formulario_adopcion');
+
 Route::get('/mascotas', [mascotasController::class, 'index'])
     ->name('mascotas.index');
 
