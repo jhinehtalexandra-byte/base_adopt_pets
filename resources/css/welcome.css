@@ -147,7 +147,12 @@ body {
 
 @media (max-width:768px){
 
-
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+    
     #adoptpets {
         background-position: top center !important;
         padding-top: 40px;
@@ -165,6 +170,7 @@ body {
     }
 
     .img-contenedor{
+        display: flex;
         padding-top: 350px;
         padding-bottom: 0;
     }
@@ -255,4 +261,6 @@ body {
         font-size: 16px;
         padding: 10px 12px;
     }
+
+        
 }

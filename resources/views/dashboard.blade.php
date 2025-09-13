@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>@yield('title')</title>
 
@@ -27,29 +27,34 @@
 <body class="@yield('body-class')">
     <header>
         <div class="contenedor">
-            <a href="{{ url('/') }}" class="logo">
-                <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-            </a>
-            <nav>
-                <a href="{{ route('mascotas.index') }}" class="nav-link">Adoptar</a>
-                <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-                <a href="{{ route('mascotas.index') }}" class="nav-link>">Mascotas</a>
-                <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-                    
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+            <!-- Checkbox oculto que controla el nav -->
+            <input type="checkbox" id="menu-toggle">
 
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="boton">Registrarse</a>
-                            <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-                        @endif
-                    @endauth
-                @endif
+            <!-- El logo sigue igual -->
+            <label for="menu-toggle" class="logo">
+            <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
+            </label>
+
+            <nav>
+            <a href="{{ route('mascotas.index') }}" class="nav-link">Adoptar</a>
+            <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
+            <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
+            <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
+                
+            @if (Route::has('login'))
+                @auth
+                    <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                @else
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="boton">Registrarse</a>
+                        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
+                    @endif
+                @endauth
+            @endif
             </nav>
         </div>
     </header>
+
     <main>
         @yield('contenido')
     </main>

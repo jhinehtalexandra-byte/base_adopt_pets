@@ -1,6 +1,17 @@
-@extends('layouts.app')
+@extends('dashboard')
 
-@section('content')
+@section('title','formulario adopcion')
+
+@section('body-class', 'formulario adopcion')
+
+@section('extra-css')
+    <style>
+        {!! file_get_contents(resource_path('css/formularioadop.css')) !!}
+    </style>
+@endsection
+
+@section('contenido')
+
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -9,7 +20,7 @@
                     <h3 class="mb-0">🐾 Solicitud de Adopción</h3>
                 </div>
                 <div class="card-body p-4">
-                    <form action="{{ route('adopcion.enviar') }}" method="post" enctype="multipart/form-data">
+                    <form action="">
                         @csrf
                         <input type="hidden" name="id_mascota" value="{{ $mascota->id_mascota ?? 1 }}">
 
