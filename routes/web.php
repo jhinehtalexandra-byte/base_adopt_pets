@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mascotas\mascotasController;
+use Illuminate\Support\Facades\Route;
 
 // === RUTAS PÚBLICAS ===
 // Ruta para la página principal
@@ -15,12 +15,7 @@ Route::get('paginas.formulario_adopcion', function () {
 
 Route::get('/mascotas', [mascotasController::class, 'index'])
     ->name('mascotas.index');
-    
-// Ruta para editar mascota
-Route::get('/mascotas/{id}/edit', [mascotasController::class, 'edit'])->name('mascotas.edit');
 
-// Ruta para eliminar mascota  
-Route::delete('/mascotas/{id}', [mascotasController::class, 'destroy'])->name('mascotas.destroy');
 
 // Ruta para contáctanos
 Route::get('/contactanos', function () {
@@ -40,6 +35,7 @@ Route::get('/refugios', function () {
 Route::get('/forgot', function () {
     return view('auth.forgot');
 })->name('forgot');
+
 
 // Otras rutas públicas (opcional)
 Route::get('/about', function () {
@@ -64,6 +60,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
 
     // === TUS RUTAS PROTEGIDAS PERSONALIZADAS ===
     // Agrega aquí todas las rutas que requieren autenticación
@@ -93,3 +90,8 @@ Route::prefix('api')->middleware('auth:sanctum')->group(function () {
     
     // Route::apiResource('posts', PostController::class);
 });
+
+
+
+
+

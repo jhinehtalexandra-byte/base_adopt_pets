@@ -13,10 +13,11 @@ class mascotasController extends Controller
      */
     public function index()
     {
-        $mascotas = Mascota::with('Refugio')
-            ->orderBy('id_mascota')
-            ->get();
-        return view('mascotas.masco', compact('mascotas')); 
+
+    $mascotas = Mascota::with('Refugio')
+        -> orderBy('id_mascota')
+        ->get();
+            return view('mascotas.masco',compact('mascotas')); 
     }
 
     /**
@@ -46,10 +47,9 @@ class mascotasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Mascota $mascota)
     {
-        $mascota = Mascota::findOrFail($id);
-        return view('mascotas.edit', compact('mascota'));
+        //
     }
 
     /**
@@ -63,10 +63,8 @@ class mascotasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Mascota $mascota)
     {
-        $mascota = Mascota::findOrFail($id);
-        $mascota->delete();
-        return redirect()->back()->with('success', 'Mascota eliminada correctamente');
+        //
     }
 }

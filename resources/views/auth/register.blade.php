@@ -8,9 +8,30 @@
   <style>
     {!! file_get_contents(resource_path('css/register.css')) !!}
   </style>
+<<<<<<< HEAD
+</head>
+<body>
+  <header>
+    <div class="contenedor">
+      <a href="{{ url('/') }}" class="logo">
+        <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
+      </a>
+      <nav>
+        <a href="{{ url('/') }}#adoptpets" class="nav-link">Inicio</a>
+        <a href="#" class="nav-link">Adoptar</a>
+        <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
+        <a href="#" class="nav-link">Dashboard</a>
+        <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
+        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
+      </nav>
+    </div>
+  </header>
+=======
 @endsection
 
 @section('contenido')
+>>>>>>> 7c26f57ddf3e56804cd51270852cc815f64a7c68
+
   <section class="registro-container">
     <div class="registro-formulario">
       <h1>AdoptPets</h1>
