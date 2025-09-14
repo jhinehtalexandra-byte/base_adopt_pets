@@ -233,6 +233,33 @@ header a:hover {
   color: #999;
 }
 
+/* Estilos específicos para los campos de refugio cuando están visibles */
+#refugio-fields.active select[name="tipo_documento_refugio"] {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  color: #666;
+  background-color: #ffffff;
+}
+
+#refugio-fields.active select[name="tipo_documento_refugio"]:focus {
+  outline: none;
+  border-color: #22C55E;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+#refugio-fields.active select[name="tipo_documento_refugio"] option:first-child {
+  color: #999;
+}
+
+#refugio-fields.active select[name="tipo_documento_refugio"] option:not(:first-child) {
+  color: #333;
+}
+
 /* Términos y condiciones */
 .terminos {
   display: flex;
