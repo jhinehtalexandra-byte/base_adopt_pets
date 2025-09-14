@@ -36,7 +36,7 @@
             <label for="menu-toggle" class="menu-icon">☰</label>
 
             <nav>
-                <a href="">Adoptar</a>
+                <a href="{{ route('welcome') }}" class="nav-link">Adoptar</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
                 <a href="{{ route('mascotas.index') }}" class="nav-link>">Mascotas</a>
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>

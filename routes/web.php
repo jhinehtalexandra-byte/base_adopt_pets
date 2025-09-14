@@ -22,6 +22,10 @@ Route::get('/contactanos', function () {
     return view('auth.contactanos');
 })->name('contactanos');
 
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
 // Página de Refugios
 Route::get('/refugios', function () {
     return view('auth.refugios');
@@ -87,12 +91,7 @@ Route::prefix('api')->middleware('auth:sanctum')->group(function () {
     // Route::apiResource('posts', PostController::class);
 });
 
-//Jose Velasquez - Formulario de adopcion
 
-use App\Http\Controllers\AdopcionController;
 
-// Jose Velasquez - Formulario de adopción
-Route::get('/', function () {
-    return view('formulario_adopcion'); 
-});
+
 
