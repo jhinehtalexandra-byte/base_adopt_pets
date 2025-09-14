@@ -14,9 +14,10 @@ class mascotasController extends Controller
     public function index()
     {
 
-        $mascotas = Mascota::all();
-        return view('mascotas.masco',compact('mascotas'));
-
+    $mascotas = Mascota::with('Refugio')
+        -> orderBy('id_mascota')
+        ->get();
+            return view('mascotas.masco',compact('mascotas')); 
     }
 
     /**

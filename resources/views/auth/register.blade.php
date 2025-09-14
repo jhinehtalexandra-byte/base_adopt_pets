@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-  <title>Crear cuenta - AdoptPets</title>
+@extends('dashboard')
+
+@section('title', 'registro')
+
+@section('body-class', 'registro')
+
+@section('extra-css')
   <style>
     {!! file_get_contents(resource_path('css/register.css')) !!}
   </style>
+<<<<<<< HEAD
 </head>
 <body>
   <header>
@@ -25,6 +26,11 @@
       </nav>
     </div>
   </header>
+=======
+@endsection
+
+@section('contenido')
+>>>>>>> 7c26f57ddf3e56804cd51270852cc815f64a7c68
 
   <section class="registro-container">
     <div class="registro-formulario">
@@ -332,5 +338,4 @@
       toggleUserType();
     });
   </script>
-</body>
-</html>
+@endsection

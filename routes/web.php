@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('paginas.formulario_adopcion', function () {
+    return view('paginas.formulario_adopcion');
+})->name('formulario_adopcion');
+
 Route::get('/mascotas', [mascotasController::class, 'index'])
     ->name('mascotas.index');
 
@@ -17,6 +21,10 @@ Route::get('/mascotas', [mascotasController::class, 'index'])
 Route::get('/contactanos', function () {
     return view('auth.contactanos');
 })->name('contactanos');
+
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 // Página de Refugios
 Route::get('/refugios', function () {
@@ -52,10 +60,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
-    Route::get('/dentro', function () {
-        return view('dentro');
-    })->name('dentro');
+
+
     // === TUS RUTAS PROTEGIDAS PERSONALIZADAS ===
     // Agrega aquí todas las rutas que requieren autenticación
     
@@ -84,3 +90,8 @@ Route::prefix('api')->middleware('auth:sanctum')->group(function () {
     
     // Route::apiResource('posts', PostController::class);
 });
+
+
+
+
+

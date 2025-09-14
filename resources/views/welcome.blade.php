@@ -1,5 +1,15 @@
 @extends('dashboard')
 
+@section('title','AdoptPets')
+
+@section('body-class', 'AdoptPets')
+
+@section('extra-css')
+    <style>
+        {!! file_get_contents(resource_path('css/welcome.css')) !!}
+    </style>
+@endsection
+
 @section('contenido')
         <!-- Hero Section -->
         <section id="adoptpets">
@@ -46,6 +56,8 @@
                         <div class="text-wrapper-7">
                             https://elcomercio.pe/wuf/consultorio/adoptar-mascota-7-razones-considerarlo-252458-noticia/?ref=ecr
                         </div>
+
+                        <a href="{{ route('formulario_adopcion') }}" class="nav-link">Formulario</a>
                     </div>
                 </div>
             </div>
@@ -64,37 +76,4 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="contenedor">
-                <div class="footer-content">
-                    <div class="footer-section">
-                        <h3>Síguenos en nuestras redes sociales</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="Facebook">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="social-icon" aria-label="YouTube">
-                                <i class="fab fa-youtube"></i>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="footer-section">
-                        <div class="contact-info">
-                            <p><i class="fas fa-phone"></i> Teléfono: 239812910010</p>
-                            <p><i class="fas fa-envelope"></i> Correo: adopttpetts@example.com</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle 156 # 58-26 Bogotá-Colombia</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="footer-bottom">
-                    <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
-                </div>
-            </div>
-        </footer>
 @endsection
