@@ -27,18 +27,18 @@
 <body class="@yield('body-class')">
     <header>
         <div class="contenedor">
-            <label for="menu-toggle" class="logo">
+            <!-- ✅ CORREGIDO: Ahora el logo es un enlace que va a welcome -->
+            <a href="{{ route('welcome') }}" class="logo">
                 <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-            </label>
+            </a>
 
-            
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">☰</label>
 
             <nav>
                 <a href="{{ route('welcome') }}" class="nav-link">Adoptar</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-                <a href="{{ route('mascotas.index') }}" class="nav-link>">Mascotas</a>
+                <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
                     
                 @if (Route::has('login'))

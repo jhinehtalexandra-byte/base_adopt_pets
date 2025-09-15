@@ -57,7 +57,7 @@
                             https://elcomercio.pe/wuf/consultorio/adoptar-mascota-7-razones-considerarlo-252458-noticia/?ref=ecr
                         </div>
 
-                        <a href="{{ route('formulario_adopcion') }}" class="nav-link">Formulario</a>
+                        
                     </div>
                 </div>
             </div>
