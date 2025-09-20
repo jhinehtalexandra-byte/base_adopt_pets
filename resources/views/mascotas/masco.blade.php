@@ -105,12 +105,12 @@
                         <!-- CON ESTA NUEVA SECCIÓN -->
                         <div class="header-section">
                             <h1 style="color: #137035;">Lista de Mascotas</h1>
-                            <a href="{{ route('formulario_adopcion') }}" class="btn-formulario">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
-                                </svg>
-                                Formulario de Adopción
-                            </a>
+                    <a href="{{ route('mascotas.create') }}" class="btn-formulario">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                        Registrar Nueva Mascota
+                    </a>
                         </div>
                        
                         <table id="mascotas" class="display" style="width:100%; padding: 30px;" border="1" cellpadding="8" cellspacing="0" width="100%">
