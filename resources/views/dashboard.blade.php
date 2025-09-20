@@ -27,17 +27,19 @@
 <body class="@yield('body-class')">
     <header>
         <div class="contenedor">
+            <!-- ✅ CORREGIDO: Ahora el logo es un enlace que va a welcome -->
+            <a href="{{ route('welcome') }}" class="logo">
             <label for="" class="">
                 <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
-            </label>
+            </a>
 
-            
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="menu-icon">☰</label>
             
 
             <nav>
                 <a href="{{ route('welcome') }}" class="nav-link">Adoptar</a>
+                <a href="{{ route('masco') }}" class="nav-link">Mascotas</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
                 <a href="{{ route('blogadopt') }}" class="nav-link">Blog</a>
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>

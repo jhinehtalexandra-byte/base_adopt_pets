@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Mascotas\mascotasController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Mascotas\mascotasController;
 
 // === RUTAS PÚBLICAS ===
 
@@ -10,13 +10,39 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('paginas.formulario_adopcion', function () {
+// Página para adoptar (formulario de adopción estático)
+Route::get('/adoptar', function () {
     return view('paginas.formulario_adopcion');
-})->name('formulario_adopcion');
+})->name('adoptar');
 
+// === RUTAS DE MASCOTAS ===
+// Página principal de mascotas (pública)
 Route::get('/mascotas', [mascotasController::class, 'index'])
     ->name('mascotas.index');
 
+// Formulario para crear mascota (protegida)
+Route::get('/mascotas/create', [mascotasController::class, 'create'])
+    ->name('mascotas.create');
+
+// Guardar nueva mascota (protegida)
+Route::post('/mascotas', [mascotasController::class, 'store'])
+    ->name('mascotas.store');
+
+// Mostrar una mascota específica
+Route::get('/mascotas/{id}', [mascotasController::class, 'show'])
+    ->name('mascotas.show');
+
+// Formulario para editar mascota (protegida)
+Route::get('/mascotas/{id}/edit', [mascotasController::class, 'edit'])
+    ->name('mascotas.edit');
+
+// Actualizar mascota (protegida)
+Route::put('/mascotas/{id}', [mascotasController::class, 'update'])
+    ->name('mascotas.update');
+
+// Eliminar mascota (protegida)
+Route::delete('/mascotas/{id}', [mascotasController::class, 'destroy'])
+    ->name('mascotas.destroy');
 
 // Ruta para contáctanos
 Route::get('/contactanos', function () {
@@ -40,7 +66,6 @@ Route::get('/blogadopt', function () {
 Route::get('/forgot', function () {
     return view('auth.forgot');
 })->name('forgot');
-
 
 // Otras rutas públicas (opcional)
 Route::get('/about', function () {
@@ -66,9 +91,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-
     // === TUS RUTAS PROTEGIDAS PERSONALIZADAS ===
-    // Agrega aquí todas las rutas que requieren autenticación
+    // Si quieres que algunas rutas de mascotas requieran autenticación, muévelas aquí
+    // Por ejemplo, solo usuarios autenticados pueden crear/editar mascotas
     
     // Ejemplo: Gestión de perfil personalizada
     // Route::get('/mi-perfil', function () {
@@ -95,8 +120,3 @@ Route::prefix('api')->middleware('auth:sanctum')->group(function () {
     
     // Route::apiResource('posts', PostController::class);
 });
-
-
-
-
-

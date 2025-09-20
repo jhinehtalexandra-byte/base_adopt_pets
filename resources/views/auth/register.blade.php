@@ -11,7 +11,6 @@
 @endsection
 
 @section('contenido')
-
   <section class="registro-container">
     <div class="registro-formulario">
       <h1>AdoptPets</h1>
@@ -158,6 +157,7 @@
           @error('nombre_representante')
             <span class="error">{{ $message }}</span>
           @enderror
+        
 
           <div class="fila single">
             <input type="email" 
@@ -186,17 +186,28 @@
             <span class="error">{{ $message }}</span>
           @enderror
 
-          <div class="fila single">
+          <div class="fila">
+            <select name="tipo_documento_refugio" required>
+              <option value="" disabled {{ old('tipo_documento_refugio') ? '' : 'selected' }}>Tipo de documento</option>
+              <option value="cc" {{ old('tipo_documento_refugio') == 'cc' ? 'selected' : '' }}>Cédula de Ciudadanía (C.C.)</option>
+              <option value="ce" {{ old('tipo_documento_refugio') == 'ce' ? 'selected' : '' }}>Cédula de Extranjería (C.E.)</option>
+              <option value="ti" {{ old('tipo_documento_refugio') == 'ti' ? 'selected' : '' }}>Tarjeta de Identidad (T.I.)</option>
+              <option value="pp" {{ old('tipo_documento_refugio') == 'pp' ? 'selected' : '' }}>Pasaporte (P.P.)</option>
+            </select>
             <input type="text" 
                    name="numero_documento_representante" 
-                   placeholder="Número de documento del representante" 
+                   placeholder="Num doc representante" 
                    value="{{ old('numero_documento_representante') }}">
           </div>
+          @error('tipo_documento_refugio')
+            <span class="error">{{ $message }}</span>
+          @enderror
           @error('numero_documento_representante')
             <span class="error">{{ $message }}</span>
           @enderror
         </div>
 
+        
         {{-- Campos de contraseña (comunes para ambos) --}}
         <div class="fila single">
           <input type="password" 
@@ -268,7 +279,7 @@
           adoptanteInputs.forEach(input => input.required = true);
           
           // Quitar requeridos de refugio
-          const refugioInputs = refugioFields.querySelectorAll('input');
+          const refugioInputs = refugioFields.querySelectorAll('input, select');
           refugioInputs.forEach(input => input.required = false);
           
         } else if (refugioRadio.checked) {
@@ -278,7 +289,7 @@
           refugioFields.classList.add('active');
           
           // Hacer requeridos los campos de refugio
-          const refugioInputs = refugioFields.querySelectorAll('input');
+          const refugioInputs = refugioFields.querySelectorAll('input, select');
           refugioInputs.forEach(input => input.required = true);
           
           // Quitar requeridos de adoptante

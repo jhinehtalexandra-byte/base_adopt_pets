@@ -43,15 +43,15 @@ class Mascota extends Model
 {
 	protected $table = 'mascotas';
 	protected $primaryKey = 'id_mascota';
-	public $timestamps = false;
+	public $timestamps = false; // Mantener como está ya que usas fecha_registro
 
 	protected $casts = [
 		'edad_aproximada' => 'int',
-		'peso' => 'float',
+		'peso' => 'decimal:2', // Cambiar de 'float' a 'decimal:2' para mejor precisión
 		'vacunado' => 'bool',
 		'esterilizado' => 'bool',
 		'microchip' => 'bool',
-		'fecha_ingreso' => 'datetime',
+		'fecha_ingreso' => 'date', // Cambiar de 'datetime' a 'date' porque solo necesitas la fecha
 		'id_refugio' => 'int',
 		'fecha_registro' => 'datetime'
 	];
@@ -72,9 +72,26 @@ class Mascota extends Model
 		'microchip',
 		'estado_adopcion',
 		'fecha_ingreso',
-		'id_refugio',
-		'fecha_registro'
+		'id_refugio'
+		// Quitar 'fecha_registro' del fillable ya que se debe establecer automáticamente
 	];
+
+	// Agregar este método para establecer valores por defecto
+	protected static function boot()
+	{
+		parent::boot();
+		
+		static::creating(function ($mascota) {
+			// Establecer fecha_registro automáticamente al crear
+			if (!$mascota->fecha_registro) {
+				$mascota->fecha_registro = now();
+			}
+			// Establecer estado_adopcion por defecto
+			if (!$mascota->estado_adopcion) {
+				$mascota->estado_adopcion = 'disponible';
+			}
+		});
+	}
 
 	public function refugio()
 	{
