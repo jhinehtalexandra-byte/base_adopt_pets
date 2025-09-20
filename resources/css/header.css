@@ -125,36 +125,44 @@ button:hover {
 @media (max-width:768px){
 
     header nav {
+        position: absolute;
+        top: 70px;
+        left: -0px;
         flex-direction: column;
         gap: 12px;
         text-align: center;
-        padding: 0;
+        background: #ffffff;
+        backdrop-filter: blur(10px);
+        padding: 20px 40px 10px 40px;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
         transition: max-height 0.35s ease, opacity 0.25s ease;
         width: 100%;
+        z-index: 99;
     }
 
-    #menu-toggle {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
+    .menu-icon {
+        display: block;
+        color: #22C55E;
+        cursor: pointer;
     }
 
 
-    #menu-toggle:checked + .menu-icon + nav {
+    #menu-toggle:checked ~ nav {
         max-height: 600px;
         opacity: 1;
+
     }
 
     header .contenedor{
-        padding: 20px 0px 10px 0px;
-        display: flex;
-        flex-direction: column;
+        padding: 20px 40px 10px 40px;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         max-width: 100%;
-        gap: 8px;
+        gap: 120px;
+        position: relative;
     }
     
     nav a,
@@ -162,7 +170,14 @@ button:hover {
         width: 90%;
         text-align: center;
         padding: 10px;
+        display: block;
         border-radius: 8px;
         margin-right: 0px;
+    }
+
+    .logo{
+        position: static;
+        display: block;
+        margin: 0 auto;
     }
 }

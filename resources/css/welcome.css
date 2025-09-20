@@ -150,7 +150,7 @@ body {
 
     #adoptpets {
         background-position: top center !important;
-        padding-top: 40px;
+        padding-top: 80px;
         flex-direction: column;
         padding-bottom: 80px;
         display: flex;
@@ -163,10 +163,15 @@ body {
     #adoptpets h1{
         font-size: 70px;
     }
+    
+    #noticias{
+        background-color: #ffffff;
+        padding: 0%;
+    }
 
     .img-contenedor{
-        padding-top: 350px;
-        padding-bottom: 0;
+        padding-top: 310px;
+        padding-bottom: 300px;
     }
 
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\Mascotas\mascotasController;
 use Illuminate\Support\Facades\Route;
 
 // === RUTAS PÚBLICAS ===
+
 // Ruta para la página principal
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +31,10 @@ Route::get('/welcome', function () {
 Route::get('/refugios', function () {
     return view('auth.refugios');
 })->name('refugios');
+
+Route::get('/blogadopt', function () {
+    return view('blog.blogadopt');
+})->name('blogadopt');
 
 // Página de forgot
 Route::get('/forgot', function () {
