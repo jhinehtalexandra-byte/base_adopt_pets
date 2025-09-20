@@ -11,9 +11,9 @@ Route::get('/', function () {
 })->name('home');
 
 // Página para adoptar (formulario de adopción estático)
-Route::get('/adoptar', function () {
-    return view('paginas.formulario_adopcion');
-})->name('adoptar');
+Route::get('/adopcion', function () {
+    return view('adopcion');
+})->name('adopcion');
 
 // === RUTAS DE MASCOTAS ===
 // Página principal de mascotas (pública)

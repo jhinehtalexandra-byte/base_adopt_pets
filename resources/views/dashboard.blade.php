@@ -38,7 +38,8 @@
             
 
             <nav>
-                <a href="{{ route('welcome') }}" class="nav-link">Adoptar</a>
+                <a href="{{ route('adopcion') }}" class="nav-link">Adoptar</a>
+                <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
                 <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
                 <a href="{{ route('blogadopt') }}" class="nav-link">Blog</a>
