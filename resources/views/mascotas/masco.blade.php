@@ -1,4 +1,4 @@
-@extends('dashboard') 
+@extends('layouts.app-adopt-pets') 
 
 @section('title', 'tabla_mascotas')
 
