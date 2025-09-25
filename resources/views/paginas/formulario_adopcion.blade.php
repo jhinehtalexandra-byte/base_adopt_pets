@@ -53,7 +53,7 @@
         }
 
         .logo img {
-            height: 60px;
+            height: 30px;
             width: auto;
         }
 
