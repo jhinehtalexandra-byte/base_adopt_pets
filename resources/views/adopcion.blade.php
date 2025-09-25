@@ -137,7 +137,7 @@
                     <!-- Mascota 4 -->
                     <div class="mascota-card">
                         <div class="mascota-imagen">
-                            <img src="{{ asset('images/perrito3.jpg') }}" alt="Bella - Perra Criolla" />
+                            <img src="{{ asset('images/perrito3.png') }}" alt="Bella - Perra Criolla" />
                             <div class="estado-badge disponible">Disponible</div>
                         </div>
                         <div class="mascota-info">
