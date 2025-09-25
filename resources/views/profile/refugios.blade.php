@@ -1,31 +1,178 @@
-@extends('dashboard')
-
-@section('title', 'refugios')
-
-@section('body-class', 'refugios')
-
-@section('extra-css')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ __('Refugios') }} - AdoptPets</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="{{ asset('css/refugios.css') }}">
+    
+    <!-- Styles globales -->
     <style>
+  
         {!! file_get_contents(resource_path('css/refugios.css')) !!}
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        body {
+            background: #f1fdf5;
+            font-family: 'Noto Sans', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #137035;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: #22C55E;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+
+        /* Menu hamburguesa para móviles */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #137035;
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            #menu-toggle:checked ~ nav {
+                left: 0;
+            }
+
+            .nav-link {
+                margin: 10px 0;
+                width: 200px;
+                text-align: center;
+            }
+        }
     </style>
-@endsection
+</head>
 
-@section('contenido')
+<body class="font-sans antialiased refugios">
+    <!-- Header -->
+    <header>
+        <div class="contenedor">
+            <a href="{{ route('welcome') }}" class="logo">
+                <img src="{{ asset('images/AdoptPets.png') }}" alt="AdoptPets Logo">
+            </a>
 
-  <main class="refugios-section">
-    <!-- Encabezado -->
-    <div class="refugios-header">
-      <h1>Refugios de Animales</h1>
-      <p>Conoce los refugios y organizaciones que trabajan día a día para rescatar, cuidar y encontrar hogares para los animales que más lo necesitan en Bogotá.</p>
-    </div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">☰</label>
 
-    <!-- Filtros -->
-    <div class="filtros">
-      <button class="filtro-btn active" data-filter="todos">Todos los Refugios</button>
-      <button class="filtro-btn" data-filter="perros y gatos">Especializado en Perros y Gatos</button>
-      <button class="filtro-btn" data-filter="gatos">Especializado en Gatos</button>
-      <button class="filtro-btn" data-filter="cachorros">Para Cachorros</button>
-    </div>
+            <nav>
+                <a href="{{ route('dashboard') }}" class="nav-link">{{ __('Dashboard') }}</a>
+                <a href="{{ route('contactanos') }}" class="nav-link">{{ __('Contáctanos') }}</a>
+                
+                <!-- Cerrar sesión -->
+                <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    @csrf
+                    <button type="submit" class="nav-link" style="background: none; border: none; cursor: pointer; font-family: inherit;">
+                        {{ __('Cerrar Sesión') }}
+                    </button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        @auth
+            <main class="refugios-section">
+                <!-- Encabezado -->
+                <div class="refugios-header">
+                    <h1>{{ __('Refugios de Animales') }}</h1>
+                    <p>{{ __('Conoce los refugios y organizaciones que trabajan día a día para rescatar, cuidar y encontrar hogares para los animales que más lo necesitan en Bogotá.') }}</p>
+                </div>
+
+                <!-- Filtros -->
+                <div class="filtros">
+                    <button class="filtro-btn active" data-filter="todos">Todos los Refugios</button>
+                    <button class="filtro-btn" data-filter="perros y gatos">Especializado en Perros y Gatos</button>
+                    <button class="filtro-btn" data-filter="gatos">Especializado en Gatos</button>
+                    <button class="filtro-btn" data-filter="cachorros">Para Cachorros</button>
+                </div>
 
     <!-- Grid de Refugios -->
     <div class="refugios-grid" id="refugiosGrid">
@@ -359,30 +506,53 @@
         </div>
       </article>
     </div> <!-- Cierre de refugios-grid -->
-  </main>
+  </main>  
+  </div> <!-- Cierre de refugios-grid -->
+            </main>
 
- <!-- Filtros -->
-  <script>
-    // Seleccionamos botones y cards
-    const filtroBtns = document.querySelectorAll(".filtro-btn");
-    const refugios = document.querySelectorAll(".refugio-card");
+            <!-- Script para filtros -->
+            <script>
+                // Seleccionamos botones y cards
+                const filtroBtns = document.querySelectorAll(".filtro-btn");
+                const refugios = document.querySelectorAll(".refugio-card");
 
-    filtroBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        // Quitar clase activa de todos los botones
-        filtroBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+                filtroBtns.forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        // Quitar clase activa de todos los botones
+                        filtroBtns.forEach(b => b.classList.remove("active"));
+                        btn.classList.add("active");
 
-        const filtro = btn.getAttribute("data-filter");
+                        const filtro = btn.getAttribute("data-filter");
 
-        refugios.forEach(card => {
-          if (filtro === "todos" || card.getAttribute("data-type") === filtro) {
-            card.style.display = "block";
-          } else {
-            card.style.display = "none";
-          }
-        });
-      });
-    });
-  </script>
-@endsection
+                        refugios.forEach(card => {
+                            if (filtro === "todos" || card.getAttribute("data-type") === filtro) {
+                                card.style.display = "block";
+                            } else {
+                                card.style.display = "none";
+                            }
+                        });
+                    });
+                });
+            </script>
+
+        @else
+            <div class="flex items-center justify-center min-h-screen">
+                <div class="text-center">
+                    <h1 class="text-2xl font-bold mb-4">{{ __('Acceso Restringido') }}</h1>
+                    <p class="mb-4">{{ __('Debes iniciar sesión para ver los refugios') }}</p>
+                    <a href="{{ route('login') }}" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+                        {{ __('Iniciar Sesión') }}
+                    </a>
+                </div>
+            </div>
+        @endauth
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: linear-gradient(135deg, #137035, #1B9E4B); color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
+        <div class="contenedor">
+            <p>&copy; 2025 AdoptPets - {{ __('Todos los derechos reservados') }} | Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
+        </div>
+    </footer>
+</body>
+</html>

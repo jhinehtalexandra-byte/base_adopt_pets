@@ -1,99 +1,48 @@
-@extends('dashboard')
+<x-guest-layout>
+    <x-authentication-card>
+        <x-slot name="logo">
+            <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina" class="w-20 h-20">
+        </x-slot>
 
-@section('title', 'ingreso')
+        <x-validation-errors class="mb-4" />
 
-@section('body-class', 'ingreso')
+        @session('status')
+            <div class="mb-4 font-medium text-sm text-green-600">
+                {{ $value }}
+            </div>
+        @endsession
 
-@section('extra-css')
-  <style>
-    {!! file_get_contents(resource_path('css/login.css')) !!}
-  </style>
-@endsection
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-@section('contenido')
+            <div>
+                <x-label for="email" value="{{ __('Correo') }}" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            </div>
 
-  <section class="login-container">
-    <div class="login-formulario">
-      <h1>AdoptPets</h1>
-      <h2>¡Bienvenido!</h2>
-      <p>Inicie sesión para empezar a adoptar,<br>si no tienes cuenta puedes registrarte</p>
+            <div class="mt-4">
+                <x-label for="password" value="{{ __('Contraseña') }}" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            </div>
 
-      {{-- Mostrar errores de validación --}}
-      @if ($errors->any())
-        <div class="alert alert-danger">
-          <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-      @endif
+            <div class="block mt-4">
+                <label for="remember_me" class="flex items-center">
+                    <x-checkbox id="remember_me" name="remember" />
+                    <span class="ms-2 text-sm text-gray-600">{{ __('Recordarme') }}</span>
+                </label>
+            </div>
 
-      {{-- Mostrar mensaje de éxito --}}
-      @if (session('success'))
-        <div class="alert alert-success">
-          {{ session('success') }}
-        </div>
-      @endif
+            <div class="flex items-center justify-end mt-4">
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                        {{ __('¿Olvidaste tu contraseña?') }}
+                    </a>
+                @endif
 
-      {{-- Mostrar mensaje de error de sesión --}}
-      @if (session('error'))
-        <div class="alert alert-danger">
-          {{ session('error') }}
-        </div>
-      @endif
-
-      <form method="POST" action="{{ route('login') }}">
-        @csrf
-        
-        <input type="email" 
-               name="email" 
-               placeholder="Correo electrónico" 
-               value="{{ old('email') }}" 
-               required 
-               autocomplete="email" 
-               autofocus>
-        @error('email')
-          <span class="error">{{ $message }}</span>
-        @enderror
-
-        <input type="password" 
-               name="password" 
-               placeholder="Contraseña" 
-               required 
-               autocomplete="current-password">
-        @error('password')
-          <span class="error">{{ $message }}</span>
-        @enderror
-
-        <div class="recordar">
-          <input type="checkbox" 
-                 id="remember" 
-                 name="remember" 
-                 {{ old('remember') ? 'checked' : '' }}>
-          <label for="remember">Recordar contraseña</label>
-        </div>
-
-        <button type="submit">Iniciar sesión</button>
-      </form>
-
-      <div class="login-opciones">
-        @if (Route::has('password.request'))
-          <p class="olvido-password">
-            <a href="{{ route('password.request') }}">¿Olvidaste tu contraseña?</a>
-          </p>
-        @endif
-
-        @if (Route::has('register'))
-          <p class="registro-link">
-            ¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a>
-          </p>
-        @endif
-      </div>
-    </div>
-
-    <div class="login-imagen">
-      <img src="{{ asset('images/Perro_viento.png') }}" alt="Perro feliz">
-    </div>
-  </section>
-@endsection
+                <x-button class="ms-4">
+                    {{ __('Iniciar sesión') }}
+                </x-button>
+            </div>
+        </form>
+    </x-authentication-card>
+</x-guest-layout>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href='https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
-    <title>Recuperar contraseña - AdoptPets</title>
+    <title>{{ __('Forgot Password') }} - AdoptPets</title>
     <style>
         {!! file_get_contents(resource_path('css/forgot.css')) !!}
     </style>
@@ -13,36 +14,31 @@
     <header>
         <div class="contenedor">
             <a href="{{ url('/') }}" class="logo">
-                <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
+                <img src="{{ asset('images/AdoptPets.png') }}" alt="{{ __('Logo de AdoptPets') }}">
             </a>
-            <nav>
-                <a href="{{ url('/') }}#adoptpets" class="nav-link">Inicio</a>
-                <a href="#" class="nav-link">Adoptar</a>
-                <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-                <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-                <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-            </nav>
+            
         </div>
     </header>
 
     <div class="forgot-container">
         <div class="forgot-formulario">
-            <h1>Recuperar Contraseña</h1>
+            <h1>{{ __('¿Olvidaste tu contraseña?') }}</h1>
             
-            
-            <p>{{ __('Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.') }}</p>
+            <div class="mb-4 text-sm text-gray-600">
+                {{ __('Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.') }}
+            </div>
 
-            {{-- Mensaje de estado (éxito) --}}
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
+            {{-- Mensaje de estado usando la directiva @session de Laravel --}}
+            @session('status')
+                <div class="alert alert-success mb-4 font-medium text-sm text-green-600">
+                    {{ $value }}
                 </div>
-            @endif
+            @endsession
 
-            {{-- Errores de validación --}}
+            {{-- Mostrar errores de validación --}}
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
+                <div class="alert alert-danger mb-4">
+                    <ul class="text-sm text-red-600">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -53,30 +49,36 @@
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
-                <div>
+                <div class="block">
+                    <label for="email" class="sr-only">{{ __('Correo') }}</label>
                     <input 
                         id="email" 
+                        class="block mt-1 w-full @error('email') border-red-500 @enderror"
                         type="email" 
                         name="email" 
                         value="{{ old('email') }}"
-                        placeholder="Correo electrónico"
+                        placeholder="{{ __('correo') }}"
                         required 
                         autofocus 
                         autocomplete="username"
                     />
                     @error('email')
-                        <span class="error">{{ $message }}</span>
+                        <span class="error text-sm text-red-600 mt-1">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <button type="submit">
-                    {{ __('Enviar Enlace de Recuperación') }}
-                </button>
+                <div class="flex items-center justify-end mt-4">
+                    <button type="submit" class="btn-primary">
+                        {{ __('Enviar Enlace de Recuperación') }}
+                    </button>
+                </div>
             </form>
 
-            <div class="forgot-opciones">
+            <div class="forgot-opciones mt-4">
                 <div class="volver-login">
-                    <a href="{{ route('login') }}">← {{ __('Volver al inicio de sesión') }}</a>
+                    <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900">
+                        ← {{ __('Volver al inicio de sesión') }}
+                    </a>
                 </div>
             </div>
         </div>
