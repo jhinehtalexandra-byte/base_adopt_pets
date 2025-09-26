@@ -66,7 +66,7 @@
                     <h4>Para casos graves</h4>
 
                     <li>Consulta al veterinario: Podría necesitar feromonas o terapia.</li>
-                    <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
+                    <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
                 </div>
 
                 <p>El estrés en las mascotas puede afectar seriamente su bienestar físico y emocional, pero como dueño responsable, puedes identificar las señales a tiempo para ayudarles a mejorar.
@@ -117,7 +117,7 @@
                 <p>
                     <ul>¿Está vacunado y desparasitado?</ul>
                     <ul>¿Está esterilizado o debes hacerlo tú?</ul>
-                    <ul>¿Tiene alguna condición médica o de comportamiento? </ul>
+                    <ul>¿Tiene alguna condición médica o de comportamiento? </ul>
                 </p>
 
                 <h3>5. Prepárate para recibirlo</h3>
