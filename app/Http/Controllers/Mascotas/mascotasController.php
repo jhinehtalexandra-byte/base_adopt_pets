@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Mascotas;
 
 use App\Http\Controllers\Controller;
