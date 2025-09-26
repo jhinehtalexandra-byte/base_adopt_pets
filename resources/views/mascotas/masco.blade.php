@@ -1,97 +1,9 @@
-@extends('layouts.app-adopt-pets') 
-
-@section('title', 'tabla_mascotas')
-
-@section('body-class', 'tabla_mascotas')
-
-@section('extra-css')
-    <style>
-        {!! file_get_contents(resource_path('css/welcome.css')) !!}
-        
-        /* AGREGAR ESTOS ESTILOS AQUÍ */
-        .btn-formulario {
-            background: linear-gradient(135deg, #137035, #1a8f42);
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(19, 112, 53, 0.2);
-        }
-
-        .btn-formulario:hover {
-            background: linear-gradient(135deg, #0f5d2d, #16833a);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(19, 112, 53, 0.3);
-            color: white;
-        }
-
-        .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 50px 30px 50px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .btn-editar {
-            background: linear-gradient(135deg, #2563eb, #3b82f6);
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            margin-right: 8px;
-        }
-
-        .btn-editar:hover {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-            color: white;
-            transform: translateY(-1px);
-        }
-
-        .btn-eliminar {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-eliminar:hover {
-            background: linear-gradient(135deg, #b91c1c, #dc2626);
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-            .header-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
-@endsection
-
-@section('contenido')
+<x-layouts.app
+    :title="'mascotas'"
+    bodyClass="Mascotas">
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/mascota.css') }}">
+    @endpush
 
     <div class="py-12">
         <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
@@ -99,10 +11,6 @@
                 <div style="padding:16px">
 
                     <div class="container">
-                        <!-- REEMPLAZAR ESTA LÍNEA -->
-                        <!-- <h1 style="padding: 0px 50px 30px 50px; color: #137035;">Lista de Mascotas </h1> -->
-                        
-                        <!-- CON ESTA NUEVA SECCIÓN -->
                         <div class="header-section">
                             <h1 style="color: #137035;">Lista de Mascotas</h1>
                     <a href="{{ route('mascotas.create') }}" class="btn-formulario">
@@ -170,15 +78,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script>
-    $(function() {
-        $('#mascotas').DataTable({
-            pageLength: 20,
-            dom: 'Bfrtip',
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
-            },
-            buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        $(function() {
+            $('#mascotas').DataTable({
+                pageLength: 20,
+                dom: 'Bfrtip',
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'
+                },
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            });
         });
-    });
     </script>
-@endsection
+</x-layouts.app>

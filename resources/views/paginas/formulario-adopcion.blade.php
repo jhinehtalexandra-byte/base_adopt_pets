@@ -1,16 +1,9 @@
-@extends('layouts.app-adopt-pets')
-
-@section('title','formulario adopcion')
-
-@section('body-class', 'formulario adopcion')
-
-@section('extra-css')
-    <style>
-        {!! file_get_contents(resource_path('css/formularioadop.css')) !!}
-    </style>
-@endsection
-
-@section('contenido')
+<x-layouts.app-adopt-pets
+    :title="'Adopcion - Adoptpets'"
+    bodyClass="Adopcion">
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/formularioadopcion.css') }}">
+    @endpush
 
     <div class="container my-5">
         <div class="row justify-content-center">
@@ -42,4 +35,5 @@
             </div>
         </div>
     </div>
-@endsection
+    
+</x-layouts.app-adopt-pets>

@@ -4,30 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>@yield('title')</title>
+        <title>{{ $title ?? 'AdoptPets' }}</title>
 
-        <!-- Fonts -->
+        <!-- Fuentes y assets -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-        
-        <!-- CSS -->
-        <style>
-            {!! file_get_contents(resource_path('css/header.css')) !!}
-            {!! file_get_contents(resource_path('css/footer.css')) !!}
-            body{
-                font-family: sans-serif;
-            }
-        </style>
-
-        @yield('extra-css')
-        
-        <!-- Font Awesome for social media icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+        @stack('extra-css')
+        
     </head>
-<body class="@yield('body-class')">
+<body class="{{$bodyClass ??'' }}">
     <header>
         <div class="contenedor">
-            <!-- ✅ CORREGIDO: Ahora el logo es un enlace que va a welcome -->
             <a href="{{ route('welcome') }}" class="logo">
             <label for="" class="">
                 <img src="{{ asset('images/AdoptPets.png') }}" alt="logo de la pagina">
@@ -40,26 +32,25 @@
             <nav>
                 <a href="{{ route('adopcion') }}" class="nav-link">Adoptar</a>
                 <a href="{{ route('refugios') }}" class="nav-link">Refugios</a>
-                <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
                 <a href="{{ route('blogadopt') }}" class="nav-link">Blog</a>
                 <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
                     
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                
+                @auth
+                    <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
 
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="boton">Registrarse</a>
-                            <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
-                        @endif
-                    @endauth
-                @endif
+                @else
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="boton">Registrarse</a>
+                        <a href="{{ route('login') }}" class="boton">Iniciar sesión</a>
+                    @endif
+                @endauth
+
             </nav>
         </div>
     </header>
     <main>
-        @yield('contenido')
+        {{ $slot }}
     </main>
 
     <footer class="footer">

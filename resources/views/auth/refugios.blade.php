@@ -1,16 +1,9 @@
-@extends('dashboard')
-
-@section('title', 'refugios')
-
-@section('body-class', 'refugios')
-
-@section('extra-css')
-    <style>
-        {!! file_get_contents(resource_path('css/refugios.css')) !!}
-    </style>
-@endsection
-
-@section('contenido')
+<x-layouts.app-adopt-pets
+  :title="'Adopcion - Adoptpets'"
+  bodyClass="Adopcion">
+  @push('extra-css')
+  <link rel="stylesheet" href="{{ asset('css/refugios.css') }}">
+  @endpush
 
   <main class="refugios-section">
     <!-- Encabezado -->
@@ -385,4 +378,5 @@
       });
     });
   </script>
-@endsection
+    
+</x-layouts.app-adopt-pets>

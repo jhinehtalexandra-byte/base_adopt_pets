@@ -1,16 +1,9 @@
-@extends('layouts.app-adopt-pets')
-
-@section('title','blogs')
-
-@section('body-class', 'blogs')
-
-@section('extra-css')
-    <style>
-        {!! file_get_contents(resource_path('css/blog.css')) !!}
-    </style>
-@endsection
-
-@section('contenido')
+<x-layouts.app-adopt-pets
+    :title="'Adopcion - Adoptpets'"
+    bodyClass="Adopcion">
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+    @endpush
 
     <div class="container">
         <h1>10 señales de que tu mascota está estresada<br> (y como ayudarla)</h1>
@@ -156,4 +149,4 @@
         </div>
     </div>
 
-@endsection
+</x-layouts.app-adopt-pets>
