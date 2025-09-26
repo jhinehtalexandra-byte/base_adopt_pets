@@ -26,7 +26,7 @@ Route::get('/welcome', function () {
 
 // Página de Refugios
 Route::get('/refugios', function () {
-    return view('auth.refugios');
+    return view('profile.refugios');
 })->name('refugios');
 
 Route::get('/blogadopt', function () {
