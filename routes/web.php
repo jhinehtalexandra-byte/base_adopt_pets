@@ -17,7 +17,7 @@ Route::get('/adopcion', function () {
 })->name('adopcion');
 
 Route::get('/contactanos', function () {
-    return view('auth.contactanos');
+    return view('paginas.contactanos');
 })->name('contactanos');
 
 Route::get('/welcome', function () {
@@ -26,7 +26,7 @@ Route::get('/welcome', function () {
 
 // Página de Refugios
 Route::get('/refugios', function () {
-    return view('profile.refugios');
+    return view('paginas.refugios');
 })->name('refugios');
 
 Route::get('/blogadopt', function () {
