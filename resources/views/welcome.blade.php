@@ -10,8 +10,19 @@
             <div class="img-contenedor">
                 <h1>AdoptPets</h1>
                 <p>Adopta a tu alma gemela</p>
+                <div class="botones-principales"> 
+            </div>
+            <div class="botonesnoticias">
+                @guest
+                    <a href="{{ route('register') }}" class="boton-principal">Comenzar Adopción</a>
+                    <a href="#noticias" class="boton-secundario">Ver Noticias</a>
+                @else
+                    <a href="{{ route('dashboard') }}" class="boton-principal">Mi Dashboard</a>
+                    <a href="#noticias" class="boton-secundario">Ver Noticias</a>
+                @endguest
             </div>
         </section>
+        
         
 
     <section id="noticias">
@@ -158,12 +169,6 @@
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="contenedor">
-        <p>&copy; 2025 AdoptPets - Todos los derechos reservados</p>
-        </div>
-    </footer>
 
     <!-- Error link section -->
         <section>

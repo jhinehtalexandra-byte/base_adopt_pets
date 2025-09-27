@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quiénes Somos - AdoptPets</title>
+<x-layouts.app-adopt-pets
+    :title="'usuarios'"
+    bodyClass="usuarios">
+
     
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-    
-    <!-- Styles -->
+
     <style>
         * {
             box-sizing: border-box;
@@ -24,51 +18,9 @@
             min-height: 100vh;
         }
 
-        /* Header Styles */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+        
 
-        .contenedor {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #137035;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: #22C55E;
-            background-color: rgba(34, 197, 94, 0.1);
-        }
+        
 
         .boton {
             background: linear-gradient(135deg, #22C55E, #1B9E4B);
@@ -89,8 +41,7 @@
 
         /* Content Styles */
         main {
-            margin-top: 80px;
-            padding: 60px 20px;
+            padding: 30px 20px;
         }
 
         .contenido {
@@ -252,34 +203,9 @@
             }
         }
     </style>
-</head>
 
-<body>
-    <!-- Header -->
-    <header>
-        <div class="contenedor">
-            <a href="{{ route('welcome') }}" class="logo">
-                <img src="{{ asset('images/AdoptPets.png') }}" alt="AdoptPets Logo">
-            </a>
 
-            <nav>
-                <a href="{{ route('quienes-somos') }}" class="nav-link active">Quiénes Somos</a>
-                <a href="{{ route('blog') }}" class="nav-link">Blog</a>
-                <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
 
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="boton">Iniciar Sesión</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="boton">Registrarse</a>
-                        @endif
-                    @endauth
-                @endif
-            </nav>
-        </div>
-    </header>
 
     <!-- Main Content -->
     <main>
@@ -377,11 +303,4 @@
             </section>
         </div>
     </main>
-
-    <footer>
-        <div class="contenedor">
-            <p>&copy; 2025 AdoptPets - Todos los derechos reservados</p>
-        </div>
-    </footer>
-</body>
-</html>
+</x-layouts.app-adopt-pets>
