@@ -40,7 +40,7 @@
             
             <a href="{{ route('refugios-admin.index') }}" class="nav-link">Refugios</a>
             <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
-            <a href="{{ route('mascotas.index') }}" class="nav-link">Adoptantes</a>
+            <a href="{{ route('usuarios.index') }}" class="nav-link">Adoptantes</a>
             
             
 

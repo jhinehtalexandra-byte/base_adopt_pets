@@ -59,14 +59,15 @@
                     <h3>Soluciones practicas</h3>
 
                     <h4>Para estres leve</h4>
-
-                    <li>Rutina de ejercicio: 30 min de paseo + juegos mentales (ej: kong con snacks).</li>
-                    <li>Zona segura: Cama en lugar tranquilo + tu camiseta usada (tu olor lo calma).</li>
-
+                    <ul>
+                        <li>Rutina de ejercicio: 30 min de paseo + juegos mentales (ej: kong con snacks).</li>
+                        <li>Zona segura: Cama en lugar tranquilo + tu camiseta usada (tu olor lo calma).</li>
+                    </ul>
                     <h4>Para casos graves</h4>
-
-                    <li>Consulta al veterinario: Podría necesitar feromonas o terapia.</li>
-                    <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
+                    <ul>
+                        <li>Consulta al veterinario: Podría necesitar feromonas o terapia.</li>
+                        <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
+                    </ul>
                 </div>
 
                 <p>El estrés en las mascotas puede afectar seriamente su bienestar físico y emocional, pero como dueño responsable, puedes identificar las señales a tiempo para ayudarles a mejorar.

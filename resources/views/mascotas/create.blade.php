@@ -1,10 +1,10 @@
-@extends('layouts.app-adopt-pets')
+<x-layouts.app
+    :title="'usuarios'"
+    bodyClass="usuarios">
 
-@section('title', 'Registrar Nueva Mascota')
-
-@section('body-class', 'crear_mascota')
-
-@section('extra-css')
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/refugiosadmin.css') }}">
+    @endpush
     <style>
         {!! file_get_contents(resource_path('css/welcome.css')) !!}
         
@@ -56,9 +56,9 @@
             color: white;
         }
     </style>
-@endsection
 
-@section('contenido')
+
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="form-container">
@@ -96,4 +96,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layouts.app>

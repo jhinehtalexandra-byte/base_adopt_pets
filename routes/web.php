@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Adoptantes\AdoptantesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mascotas\mascotasController;
 use App\Http\Controllers\Refugios\RefugiosController;
+
 
 // === RUTAS PÚBLICAS ===
 
@@ -51,6 +53,8 @@ Route::get('/formulario-adopcion', function(){
     return view('paginas.formulario-adopcion');
 })->name('formulario');
 
+// rutas privadas
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -63,10 +67,14 @@ Route::middleware([
     })->name('dashboard');
     //ruta refugios 
    Route::resource('refugios-admin',RefugiosController::class)
-    ->names('refugios-admin');
+    ->names('refugios-admin')
+    ->parameters(['refugio-admin' => 'refugio']);
     // ruta mascotas
     Route::resource('masco',mascotasController::class)
     ->names('mascotas');
+    // ruta mascotas
+    Route::resource('usuarios',AdoptantesController::class)
+    ->names('usuarios');
 });
 
 

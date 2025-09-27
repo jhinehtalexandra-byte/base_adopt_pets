@@ -31,6 +31,7 @@
                                     <th>Localidad</th>
                                     <th>Capacidad</th>
                                     <th>Fecha de Registro</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,7 +45,16 @@
                                         <td>{{ $refugio->localidad}}</td>
                                         <td>{{ $refugio->capacidad_maxima}}</td>
                                         <td>{{ $refugio->fecha_registro}}</td>
-                                        <td>
+                                        <td class="flex gap-2">
+                                            <a href="{{ route('refugios-admin.edit', $refugio->id) }}" class="bg-green-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">
+                                                Editar</a>
+                                            <form action="{{ route('refugios-admin.destroy', $refugio->id) }}" method="POST"
+                                                onsubmit="return confirm('¿Eliminar?')">
+                                                @csrf 
+                                                @method('DELETE')
+                                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">Eliminar</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
