@@ -1,20 +1,85 @@
-@extends('dashboard')
+<x-layouts.app
+    :title="'usuarios'"
+    bodyClass="usuarios">
 
-@section('title', 'Registrar Nueva Mascota')
-
-@section('body-class', 'crear_mascota')
-
-@section('extra-css')
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/refugiosadmin.css') }}">
+    @endpush
     <style>
-        {!! file_get_contents(resource_path('css/welcome.css')) !!}
-        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            font-family: 'Noto Sans', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #137035;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: #22C55E;
+            background-color: rgba(34, 197, 94, 0.1);
+        }
+
+        /* Main content */
+        .main-content {
+            margin-top: 80px;
+            padding: 40px 20px;
+        }
+
         .form-container {
             background: white;
             padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        
+
         .btn-guardar {
             background: linear-gradient(135deg, #137035, #1a8f42);
             color: white;
@@ -56,9 +121,9 @@
             color: white;
         }
     </style>
-@endsection
 
-@section('contenido')
+
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="form-container">
@@ -96,4 +161,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-layouts.app>

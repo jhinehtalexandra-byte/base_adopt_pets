@@ -1,132 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog - AdoptPets</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href='https://fonts.googleapis.com/css?family=Noto Sans' rel='stylesheet'>
-    
-    <!-- CSS del blog original -->
-    <style>
-        {!! file_get_contents(resource_path('css/blog.css')) !!}
-        
-        /* Styles adicionales para header público */
-        body {
-            font-family: 'Noto Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+<x-layouts.app-adopt-pets
+    :title="'Adopcion - Adoptpets'"
+    bodyClass="Adopcion">
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+    @endpush
 
-        /* Header Styles */
-        .public-header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #137035;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            padding: 10px 15px;
-            border-radius: 5px;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: #22C55E;
-            background-color: rgba(34, 197, 94, 0.1);
-        }
-
-        .boton {
-            background: linear-gradient(135deg, #22C55E, #1B9E4B);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .boton:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
-        }
-
-        /* Ajustar contenido para header fijo */
-        .container {
-            margin-top: 100px;
-        }
-
-        /* Footer */
-        .public-footer {
-            background: linear-gradient(135deg, #137035, #1B9E4B);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Header -->
-    <header class="public-header">
-        <div class="header-container">
-            <a href="{{ route('welcome') }}" class="logo">
-                <img src="{{ asset('images/AdoptPets.png') }}" alt="AdoptPets Logo">
-            </a>
-
-            <nav>
-                <a href="{{ route('quienes-somos') }}" class="nav-link">Quiénes Somos</a>
-                <a href="{{ route('blog') }}" class="nav-link active">Blog</a>
-                <a href="{{ route('contactanos') }}" class="nav-link">Contáctanos</a>
-
-                @if (Route::has('login'))
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="boton">Iniciar Sesión</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="boton">Registrarse</a>
-                        @endif
-                    @endauth
-                @endif
-            </nav>
-        </div>
-    </header>
-
-    <!-- Contenido del blog original -->
     <div class="container">
         <h1>10 señales de que tu mascota está estresada<br> (y como ayudarla)</h1>
 
@@ -181,14 +59,15 @@
                     <h3>Soluciones practicas</h3>
 
                     <h4>Para estres leve</h4>
-
-                    <li>Rutina de ejercicio: 30 min de paseo + juegos mentales (ej: kong con snacks).</li>
-                    <li>Zona segura: Cama en lugar tranquilo + tu camiseta usada (tu olor lo calma).</li>
-
+                    <ul>
+                        <li>Rutina de ejercicio: 30 min de paseo + juegos mentales (ej: kong con snacks).</li>
+                        <li>Zona segura: Cama en lugar tranquilo + tu camiseta usada (tu olor lo calma).</li>
+                    </ul>
                     <h4>Para casos graves</h4>
-
-                    <li>Consulta al veterinario: Podría necesitar feromonas o terapia.</li>
-                    <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
+                    <ul>
+                        <li>Consulta al veterinario: Podría necesitar feromonas o terapia.</li>
+                        <li>Adaptil Diffuser: Feromonas sintéticas (recomendado por la Asociación Veterinaria Colombiana)</li>
+                    </ul>
                 </div>
 
                 <p>El estrés en las mascotas puede afectar seriamente su bienestar físico y emocional, pero como dueño responsable, puedes identificar las señales a tiempo para ayudarles a mejorar.
@@ -271,10 +150,4 @@
         </div>
     </div>
 
-    <footer class="public-footer">
-        <div class="header-container">
-            <p>&copy; 2025 AdoptPets - Todos los derechos reservados</p>
-        </div>
-    </footer>
-</body>
-</html>
+</x-layouts.app-adopt-pets>
