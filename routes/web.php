@@ -5,6 +5,7 @@ use App\Http\Controllers\Mascotas\MascotasController;
 use App\Http\Controllers\MisMascotasController;
 use App\Http\Controllers\AdopcionController; // Agregar cuando crees el controlador
 
+
 // ================================
 // === RUTAS PÚBLICAS (SIN AUTH) ===
 // ================================
@@ -96,6 +97,26 @@ Route::middleware([
         // Temporal hasta que crees AdopcionController
         return back()->with('success', 'Solicitud de adopción recibida. Te contactaremos pronto.');
     })->name('adopcion.store');
+
+    // === RUTAS DE REPORTES ===
+
+
+    // Página principal de reportes
+    Route::get('/reportes', function () {
+    return view('reportes'); // Cambiar de string a vista
+    })->name('reportes');
+
+    // Botón de mascotas va al controlador existente
+    Route::get('/reportes/mascotas', [MascotasController::class, 'index'])->name('reportes.mascotas');
+
+    // Las otras dos en desarrollo
+    Route::get('/reportes/adoptantes', function () {
+    return redirect()->route('reportes')->with('info', 'Sección en desarrollo');
+    })->name('reportes.adoptantes');
+
+    Route::get('/reportes/refugios', function () {
+    return redirect()->route('reportes')->with('info', 'Sección en desarrollo');
+    })->name('reportes.refugios');
 
     // === GESTIÓN DE MASCOTAS (REQUIERE AUTH) ===
     
