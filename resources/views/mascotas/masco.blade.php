@@ -81,5 +81,4 @@
             });
         });
     </script>
-</body>
-</html>
+</x-layouts.app>pack
