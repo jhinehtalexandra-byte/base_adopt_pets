@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Mascotas\mascotasController;
+use App\Http\Controllers\Mascotas\MascotasController;
+use App\Http\Controllers\MisMascotasController;
 use App\Http\Controllers\AdopcionController; // Agregar cuando crees el controlador
 
 // ================================
@@ -35,8 +36,16 @@ Route::get('/quienes-somos', function () {
     return view('profile.quienes-somos');
 })->name('quienes-somos');
 
+// === RUTAS DE ADOPCIÓN PÚBLICAS ===
+
+// Página de adopción (mostrar todas las mascotas disponibles)
+Route::get('/adopcion', function () {
+    return view('adopcion');
+})->name('adopcion');
+
 // === RUTAS DE MASCOTAS PÚBLICAS ===
-// Ver mascotas (público - cualquiera puede ver)
+
+// Ver mascotas (público - datatable administrativo)
 Route::get('/mascotas', [MascotasController::class, 'index'])
     ->name('mascotas.index');
 
@@ -48,11 +57,11 @@ Route::get('/mascotas/{id}', [MascotasController::class, 'show'])
 // === RUTAS PROTEGIDAS (CON AUTH) ===
 // =====================================
 
-    Route::middleware([
+Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified', // Solo si tienes verificación de email habilitada
-    ])->group(function () {
+])->group(function () {
     
     // === DASHBOARD PRINCIPAL ===
     Route::get('/dashboard', function () {
@@ -61,22 +70,16 @@ Route::get('/mascotas/{id}', [MascotasController::class, 'show'])
 
     // === RUTAS PARA LA NAVEGACIÓN DEL DASHBOARD.BLADE.PHP ===
     
-    
     // Página para Refugios
     Route::get('/refugios', function () {
         return view('profile.refugios');
     })->name('refugios');
 
-    //  Reportes - apunta directamente al método index del controlador
-    Route::get('/mascotas/reportes', [MascotasController::class, 'index'])
-        ->name('mascotas.reportes');
+    // Mis mascotas - Panel del usuario con sus solicitudes
+    Route::get('/mis-mascotas', [MisMascotasController::class, 'index'])
+        ->name('mis-mascotas');
 
-    //  Mis mascotas - apunta a la vista adopcion.blade.php
-    Route::get('/adopcion', function () {
-        return view('adopcion');
-    })->name('adopcion');
-
-    // === RUTAS DE ADOPCIÓN (NUEVAS) ===
+    // === RUTAS DE ADOPCIÓN (AUTENTICADAS) ===
     
     // Formulario de adopción para mascota específica
     Route::get('/adopcion/{mascota}', function ($mascota) {
@@ -94,43 +97,27 @@ Route::get('/mascotas/{id}', [MascotasController::class, 'show'])
         return back()->with('success', 'Solicitud de adopción recibida. Te contactaremos pronto.');
     })->name('adopcion.store');
 
-    // Rutas públicas/ Página para adoptar (formulario de adopción estático) - apunta a la vista formulario_adopcion.blade.php
-    Route::get('/mascotas', [mascotasController::class, 'index'])->name('mascotas.index');
-    Route::get('/mascotas/{id}', [mascotasController::class, 'show'])->name('mascotas.show');
-
     // === GESTIÓN DE MASCOTAS (REQUIERE AUTH) ===
     
-    // Página principal de mascotas (pública)
-    Route::get('/mascotas', [mascotasController::class, 'index'])
-    ->name('mascotas.index');
-
-    // Mostrar mascota específica (pública)
-    Route::get('/mascotas/{id}', [mascotasController::class, 'show'])
-    ->name('mascotas.show');
-
-    // Rutas protegidas (solo autenticados)
-    Route::middleware('auth')->group(function () {
     // Formulario para crear mascota
-    Route::get('/mascotas/create', [mascotasController::class, 'create'])
+    Route::get('/mascotas/create', [MascotasController::class, 'create'])
         ->name('mascotas.create');
 
     // Guardar nueva mascota
-    Route::post('/mascotas', [mascotasController::class, 'store'])
+    Route::post('/mascotas', [MascotasController::class, 'store'])
         ->name('mascotas.store');
 
     // Formulario para editar mascota
-    Route::get('/mascotas/{id}/edit', [mascotasController::class, 'edit'])
+    Route::get('/mascotas/{id}/edit', [MascotasController::class, 'edit'])
         ->name('mascotas.edit');
 
     // Actualizar mascota
-    Route::put('/mascotas/{id}', [mascotasController::class, 'update'])
+    Route::put('/mascotas/{id}', [MascotasController::class, 'update'])
         ->name('mascotas.update');
 
     // Eliminar mascota
-    Route::delete('/mascotas/{id}', [mascotasController::class, 'destroy'])
+    Route::delete('/mascotas/{id}', [MascotasController::class, 'destroy'])
         ->name('mascotas.destroy');
-});
-
 });
 
 // ===================================

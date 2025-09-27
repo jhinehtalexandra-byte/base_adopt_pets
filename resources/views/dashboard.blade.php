@@ -210,7 +210,7 @@
     </a>
 
     <!-- Mis Mascotas - TEMPORALMENTE REDIRECT A ADOPCIÓN -->
-    <a href="{{ route('adopcion') }}" class="bg-white overflow-hidden shadow-xl sm:rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+    <a href="{{ route('mis-mascotas') }}" class="bg-white overflow-hidden shadow-xl sm:rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
         <div class="p-6 text-center">
             <div class="w-16 h-16 mx-auto bg-yellow-100 rounded-full flex items-center justify-center mb-4">
                 <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -518,5 +518,9 @@
             <p>&copy; 2025 AdoptPets - {{ __('Todos los derechos reservados') }} | Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
         </div>
     </footer>
+
+    <div style="position:fixed; bottom:10px; right:10px; background:red; color:white; padding:10px;">
+    Usuario ID: {{ Auth::id() }}
+</div>
 </body>
 </html>
