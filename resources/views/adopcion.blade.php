@@ -75,7 +75,7 @@
                             <p><strong>Nivel de energía:</strong> Medio</p>
                         </div>
                         <div class="acciones">
-                            <a href="{{ route('formulario') }}" class="btn-formulario">Adoptar Mascota</a>
+                            <a href="{{ route('formulario') }}" class="btn-adoptar">Adoptar</a>
                             <button class="btn-info">En adopción</button>
                             <button class="btn-apadrinar">Sin apadrinar</button>
                         </div>
@@ -97,7 +97,7 @@
                             <p><strong>Nivel de energía:</strong> Medio</p>
                         </div>
                         <div class="acciones">
-                            <a href="{{ url('/adopcion/2') }}" class="btn-adoptar">Adoptar</a>
+                            <a href="{{ route('formulario') }}" class="btn-adoptar">Adoptar</a>
                             <button class="btn-info">En adopción</button>
                             <button class="btn-apadrinar">Sin apadrinar</button>
                         </div>
@@ -141,7 +141,7 @@
                             <p><strong>Nivel de energía:</strong> Medio</p>
                         </div>
                         <div class="acciones">
-                            <a href="{{ url('/adopcion/4') }}" class="btn-adoptar">Adoptar</a>
+                            <a href="{{ route('formulario') }}" class="btn-adoptar">Adoptar</a>
                             <button class="btn-info">En adopción</button>
                             <button class="btn-apadrinar">Sin apadrinar</button>
                         </div>
@@ -163,7 +163,7 @@
                             <p><strong>Nivel de energía:</strong> Medio</p>
                         </div>
                         <div class="acciones">
-                            <a href="{{ url('/adopcion/5') }}" class="btn-adoptar">Adoptar</a>
+                            <a href="{{ route('formulario') }}" class="btn-adoptar">Adoptar</a>
                             <button class="btn-info">En adopción</button>
                             <button class="btn-apadrinar">Sin apadrinar</button>
                         </div>
@@ -185,7 +185,7 @@
                             <p><strong>Nivel de energía:</strong> Medio</p>
                         </div>
                         <div class="acciones">
-                            <a href="{{ url('/adopcion/6') }}" class="btn-adoptar">Adoptar</a>
+                            <a href="{{ route('formulario') }}" class="btn-adoptar">Adoptar</a>
                             <button class="btn-info">En adopción</button>
                             <button class="btn-apadrinar">Sin apadrinar</button>
                         </div>
