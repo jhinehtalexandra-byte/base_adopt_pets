@@ -5,66 +5,62 @@ namespace App\Http\Controllers\Refugios;
 use App\Http\Controllers\Controller;
 use App\Models\Refugio;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreRefugioRequest; // Agregar esta importación
-use App\Http\Requests\UpdateRefugioRequest;
-
 
 class RefugiosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $refugios=Refugio::all();
-        return view('Refugios.refugios-admin',compact('refugios'));
+        $refugios = Refugio::all();
+        return view('Refugios.refugios-admin', compact('refugios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $refugio=new Refugio();
+        return view('Refugios.create'); // Ajusta si tienes carpeta/refugio-admin/create
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required|string|max:255',
+            'correo' => 'required|email|max:255',
+        ]);
+
+        Refugio::create($request->only('nombre','direccion','correo'));
+
+        $refugios = Refugio::all();
+        return view('Refugios.refugios-admin', compact('refugios'))
+               ->with('success', 'Refugio creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Refugio $refugio)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Refugio $refugio)
     {
-        //
+        return view('Refugios.edit', compact('refugio'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Refugio $refugio)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'direccion' => 'required|string|max:255',
+            'correo' => 'required|email|max:255',
+        ]);
+
+        $refugio->update($request->only('nombre','direccion','correo'));
+
+        $refugios = Refugio::all();
+        return redirect()->route('refugios-admin.index')
+        ->with('success', 'Refugio actualizado correctamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Refugio $refugio)
     {
-        //
+        $refugio->delete();
+
+        $refugios = Refugio::all();
+        return view('Refugios.refugios-admin', compact('refugios'))
+               ->with('success', 'Refugio eliminado correctamente.');
     }
 }

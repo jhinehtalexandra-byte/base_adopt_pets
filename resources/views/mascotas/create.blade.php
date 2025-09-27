@@ -1,10 +1,10 @@
-@extends('layouts.app-adopt-pets')
+<x-layouts.app
+    :title="'usuarios'"
+    bodyClass="usuarios">
 
-@section('title', 'Registrar Nueva Mascota')
-
-@section('body-class', 'crear_mascota')
-
-@section('extra-css')
+    @push('extra-css')
+    <link rel="stylesheet" href="{{ asset('css/refugiosadmin.css') }}">
+    @endpush
     <style>
         * {
             box-sizing: border-box;
@@ -121,75 +121,44 @@
             color: white;
         }
     </style>
-</head>
 
-<body class="font-sans antialiased">
-    <!-- Header -->
-    <header>
-        <div class="contenedor">
-            <a href="{{ route('welcome') }}" class="logo">
-                <img src="{{ asset('images/AdoptPets.png') }}" alt="AdoptPets Logo">
-            </a>
 
-            <nav>
-                <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
-                <a href="{{ route('mascotas.index') }}" class="nav-link">Mascotas</a>
-                <a href="{{ route('reportes') }}" class="nav-link">Reportes</a>
-                               
-                <!-- Dropdown de usuario -->
-                <div class="relative">
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="nav-link" style="background: none; border: none; cursor: pointer;">
-                            Cerrar Sesión
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="form-container">
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900" style="color: #137035;">
+                        Registrar Nueva Mascota
+                    </h1>
+                    <p class="mt-2 text-gray-600">
+                        Complete el formulario para agregar una nueva mascota al sistema
+                    </p>
+                </div>
+
+                <form action="{{ route('mascotas.store') }}" method="POST" class="space-y-6">
+                    @csrf
+                    @include('mascotas._form', [
+                        'mascota' => null,
+                        'refugios' => $refugios,
+                    ])
+                    
+                    <div class="pt-6 flex gap-3 border-t border-gray-200">
+                        <button type="submit" class="btn-guardar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
+                            </svg>
+                            Guardar Mascota
                         </button>
-                    </form>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <div class="main-content">
-        <div class="form-container">
-            <div class="mb-6">
-                <h1 class="text-2xl font-bold text-gray-900" style="color: #137035;">
-                    Registrar Nueva Mascota
-                </h1>
-                <p class="mt-2 text-gray-600">
-                    Complete el formulario para agregar una nueva mascota al sistema
-                </p>
+                        <a href="{{ route('mascotas.index') }}" class="btn-cancelar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                            </svg>
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
             </div>
-
-            <form action="{{ route('mascotas.store') }}" method="POST" class="space-y-6">
-                @csrf
-                @include('mascotas._form', [
-                    'mascota' => null,
-                    'refugios' => $refugios,
-                ])
-                
-                <div class="pt-6 flex gap-3 border-t border-gray-200">
-                    <button type="submit" class="btn-guardar">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/>
-                        </svg>
-                        Guardar Mascota
-                    </button>
-                    <a href="{{ route('mascotas.index') }}" class="btn-cancelar">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                        </svg>
-                        Cancelar
-                    </a>
-                </div>
-            </form>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer style="background: linear-gradient(135deg, #137035, #1B9E4B); color: white; text-align: center; padding: 40px 20px; margin-top: 60px;">
-        <div class="contenedor">
-            <p>&copy; 2025 AdoptPets - Todos los derechos reservados</p>
-        </div>
-    </footer>
-</body>
-</html>
+</x-layouts.app>

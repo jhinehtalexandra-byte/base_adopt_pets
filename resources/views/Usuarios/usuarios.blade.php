@@ -1,6 +1,6 @@
 <x-layouts.app
-    :title="'refugios-admin'"
-    bodyClass="Refugios-admin">
+    :title="'usuarios'"
+    bodyClass="usuarios">
 
     @push('extra-css')
     <link rel="stylesheet" href="{{ asset('css/refugiosadmin.css') }}">
@@ -12,43 +12,41 @@
                 <div style="padding:16px">
                     <div class="container">
                         <div class="header-section">
-                            <h1 style="color: #137035;">Lista de Refugios</h1>
-                            <a href="{{ route('refugios-admin.create') }}" class="btn-formulario">
+                            <h1 style="color: #137035;">Lista de Adoptantes</h1>
+                            <a href="{{ route('usuarios.create') }}" class="btn-formulario">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 </svg>
-                                Registrar Nuevo Refugio
+                                Registrar Nuevo Adoptante
                             </a>
                         </div>
                        
-                        <table id="refugios" class="display" style="width:100%; padding: 30px;" border="1" cellpadding="8" cellspacing="0" width="100%">
+                        <table id="adoptantes" class="display" style="width:100%; padding: 30px;" border="1" cellpadding="8" cellspacing="0" width="100%">
                             <thead style="background: #f1fdf5">
                                 <tr>
                                     <th>Nombre</th>
+                                    <th>Apellido</th>
                                     <th>Direccion</th>
                                     <th>Correo</th>
                                     <th>Telefono</th>
-                                    <th>Responsable</th>
-                                    <th>Localidad</th>
-                                    <th>Capacidad</th>
+                                    <th>Cedula</th>
                                     <th>Fecha de Registro</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($refugios as $refugio)
+                                @foreach($adoptantes as $adoptante)
                                     <tr>
-                                        <td>{{ $refugio->nombre_refugio}}</td>
-                                        <td>{{ $refugio->direccion}}</td>
-                                        <td>{{ $refugio->email}}</td>
-                                        <td>{{ $refugio->telefono}}</td>
-                                        <td>{{ $refugio->responsable}}</td>
-                                        <td>{{ $refugio->localidad}}</td>
-                                        <td>{{ $refugio->capacidad_maxima}}</td>
-                                        <td>{{ $refugio->fecha_registro}}</td>
+                                        <td>{{ $adoptante->nombre}}</td>
+                                        <td>{{ $adoptante->apellido}}</td>
+                                        <td>{{ $adoptante->direccion}}</td>
+                                        <td>{{ $adoptante->email}}</td>
+                                        <td>{{ $adoptante->telefono}}</td>
+                                        <td>{{ $adoptante->cedula}}</td>
+                                        <td>{{ $adoptante->fecha_registro}}</td>
                                         <td class="flex gap-2">
-                                            <a href="{{ route('refugios-admin.edit', ['refugio'=>$refugio->id]) }}" class="bg-green-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">
+                                            <a href="{{ route('usuarios.edit', $adoptante) }}" class="bg-green-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">
                                                 Editar</a>
-                                            <form action="{{ route('refugios-admin.destroy', $refugio->id) }}" method="POST"
+                                            <form action="{{ route('usuarios.destroy', $adoptante) }}" method="POST"
                                                 onsubmit="return confirm('¿Eliminar?')">
                                                 @csrf 
                                                 @method('DELETE')
@@ -79,7 +77,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script>
         $(function() {
-            $('#refugios').DataTable({
+            $('#adoptantes').DataTable({
                 pageLength: 20,
                 dom: 'Bfrtip',
 
