@@ -4,6 +4,8 @@ use App\Http\Controllers\Adoptantes\AdoptantesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Mascotas\mascotasController;
 use App\Http\Controllers\Refugios\RefugiosController;
+use App\Http\Controllers\ReportesController;
+use App\Http\Controllers\Mascotas\MisMascotasController;
 
 
 // === RUTAS PÚBLICAS ===
@@ -75,6 +77,12 @@ Route::middleware([
     // ruta mascotas
     Route::resource('usuarios',AdoptantesController::class)
     ->names('usuarios');
+    
+    Route::get('/mis-mascotas', [MisMascotasController::class, 'index'])
+    ->name('mis-mascotas');
+    
+    Route::get('reportes', [ReportesController::class, 'index'])
+    ->name('reportes');
 });
 
 
