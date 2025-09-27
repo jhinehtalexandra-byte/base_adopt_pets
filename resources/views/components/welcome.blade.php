@@ -13,7 +13,7 @@
     <!-- Navegación principal del dashboard - CORREGIDA -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
         <!-- Adoptar - CORREGIDO -->
-        <a href="{{ route('mascotas.create') }}" class="bg-white overflow-hidden shadow-xl sm:rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+        <a href="{{ route('adopcion') }}" class="bg-white overflow-hidden shadow-xl sm:rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
             <div class="p-6 text-center">
                 <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <!-- Mascota ejemplo 1 -->
                             <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMjJjNTVlIi8+CiAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuKUvSBNYXg8L3RleHQ+Cjwvc3ZnPg==" 
+                                <img src="{{ asset('images/perrito2.jpg') }}" 
                                     alt="Max" class="w-full h-32 object-cover rounded-lg mb-3">
                                 <h4 class="font-semibold text-gray-900">Max</h4>
                                 <p class="text-sm text-gray-600">{{ __('Perro • 2 años • Mestizo') }}</p>
@@ -107,7 +107,7 @@
 
                             <!-- Mascota ejemplo 2 -->
                             <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMjJjNTVlIi8+CiAgICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPuKUvSBMdW5hPC90ZXh0Pgo8L3N2Zz4=" 
+                                <img src="{{ asset('images/gato2.jpg') }}" 
                                     alt="Luna" class="w-full h-32 object-cover rounded-lg mb-3">
                                 <h4 class="font-semibold text-gray-900">Luna</h4>
                                 <p class="text-sm text-gray-600">{{ __('Gata • 1 año • Siamés') }}</p>
@@ -129,8 +129,8 @@
                             <div class="border border-gray-200 rounded-lg p-4 bg-yellow-50">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMyMmM1NWUiLz4KICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+4pS0PC90ZXh0Pgo8L3N2Zz4=" 
-                                            alt="Rocky" class="w-15 h-15 rounded-lg object-cover">
+                                        <img src="{{ asset('images/perrito4.jpg') }}" 
+                                            alt="Rocky" class="w-16 h-16 rounded-lg object-cover">
                                         <div>
                                             <h4 class="font-semibold text-gray-900">Rocky</h4>
                                             <p class="text-sm text-gray-600">{{ __('Refugio Los Andes') }}</p>
@@ -145,8 +145,8 @@
                             <div class="border border-gray-200 rounded-lg p-4 bg-green-50">
                                 <div class="flex items-center justify-between">
                                     <div class="flex items-center space-x-4">
-                                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMyMmM1NWUiLz4KICAgIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+4pSxPC90ZXh0Pgo8L3N2Zz4=" 
-                                            alt="Mimi" class="w-15 h-15 rounded-lg object-cover">
+                                        <img src="{{ asset('images/gato3.jpg') }}"  
+                                            alt="Mimi" class="w-16 h-16 rounded-lg object-cover">
                                         <div>
                                             <h4 class="font-semibold text-gray-900">Mimi</h4>
                                             <p class="text-sm text-gray-600">{{ __('Refugio Ciudad') }}</p>

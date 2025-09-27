@@ -46,7 +46,7 @@
                                         <td>{{ $refugio->capacidad_maxima}}</td>
                                         <td>{{ $refugio->fecha_registro}}</td>
                                         <td class="flex gap-2">
-                                            <a href="{{ route('refugios-admin.edit', ['refugio'=>$refugio->id]) }}" class="bg-green-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">
+                                            <a href="{{ route('refugios-admin.edit', $refugio) }}" class="bg-green-500 text-white px-4 py-2 rounded-2xl hover:bg-green-600 mr-4">
                                                 Editar</a>
                                             <form action="{{ route('refugios-admin.destroy', $refugio->id) }}" method="POST"
                                                 onsubmit="return confirm('¿Eliminar?')">

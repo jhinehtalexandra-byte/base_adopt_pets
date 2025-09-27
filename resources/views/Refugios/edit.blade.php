@@ -21,7 +21,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('refugios-admin.update', $refugio->id) }}" method="POST" class="space-y-4">
+                <form action="route('refugios-admin.edit', $refugio) }}" method="POST" class="space-y-4">
                     @csrf
                     @method('PUT')
 

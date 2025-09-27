@@ -26,6 +26,32 @@ class AdoptantesController extends Controller
         return view('Usuarios.edit', compact('adoptante'));
     }
 
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
+    // Guardar un nuevo adoptante en la base de datos
+    public function store(Request $request)
+    {
+        // Validación de datos
+        $validated = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'direccion' => 'required|string|max:255',
+            'email' => 'required|email|unique:adoptantes,email',
+            'telefono' => 'required|string|max:20',
+            'cedula' => 'required|string|max:20|unique:adoptantes,cedula',
+        ]);
+
+        // Crear adoptante
+        Adoptante::create($validated + ['fecha_registro' => now()]);
+
+        // Redireccionar a la lista de adoptantes con mensaje
+        return redirect()->route('usuarios.index')
+                         ->with('success', 'Adoptante registrado correctamente.');
+    }
+
     /**
      * Update the specified resource in storage.
      */
