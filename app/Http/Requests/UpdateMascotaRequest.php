@@ -19,7 +19,8 @@ class UpdateMascotaRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('mascota')->id_mascota; // Ajusta según tu nombre de ruta y campo ID
+        $mascota = $this->route('mascota');
+        $id = $mascota ? $mascota->id_mascota : null;
 
         return [
             'nombre'            => 'required|string|max:100',
@@ -34,10 +35,8 @@ class UpdateMascotaRequest extends FormRequest
             'estado_salud'      => 'nullable|string|max:500',
             'vacunado'          => 'boolean',
             'esterilizado'      => 'boolean',
-            'microchip'         => 'boolean',
-            'estado_adopcion'   => 'nullable|in:disponible,en proceso,adoptado,no disponible',
-            'fecha_ingreso'     => 'required|date|before_or_equal:today',
-            'id_refugio'        => 'required|integer|exists:refugios,id_refugio',
+            // Agregar reglas de validación únicas aquí si es necesario
+            // 'email' => 'unique:mascotas,email,' . $id . ',id_mascota',
         ];
     }
 
